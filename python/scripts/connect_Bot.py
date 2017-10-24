@@ -3,12 +3,13 @@ from copy import copy
 import socket
 
 class Connect_Bot:
-    def __init__(self, ip_address , port):
+    def __init__(self, ip_address , port , mode = "Normal"):
         # Network packet specs
         self.UDP_IP = ip_address
         self.UDP_PORT = int(port)
-        print "UDP target IP:", self.UDP_IP
-        print "UDP target port:", self.UDP_PORT
+        if False:
+            print "UDP target IP:", self.UDP_IP
+            print "UDP target port:", self.UDP_PORT
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
         self.key_status = []
@@ -21,10 +22,21 @@ class Connect_Bot:
         self.speed_status_up = 0
         self.speed_status_down = 0
         # Collect events until released
-        with Listener(
+        if mode =="Normal":
+            with Listener(
                 on_press=self.on_press,
                 on_release=self.on_release) as listener:
-            listener.join()
+                listener.join()
+
+
+    def update(self):
+        key = Key
+        with self.listner(
+                on_press=self.on_press,
+                on_release=self.on_release) as listener:
+                listener.join()
+        listener.stop
+
 
     # Function changes the key_status variable active/deactive 1/0
     def key_status_toggle(self,i, status):
@@ -138,5 +150,36 @@ class Connect_Bot:
 
         except AttributeError:
             self.key_status_change(key, 1)
+
+    def move_bot(self , Input ):
+        print "Bot Instruction" , Input
+        if Input == 'F':
+            self.sock.sendto(str(9), (self.UDP_IP, self.UDP_PORT))
+        elif Input =='B':
+            self.sock.sendto(str(13), (self.UDP_IP, self.UDP_PORT))
+        elif Input =='L':
+            self.sock.sendto(str(3), (self.UDP_IP, self.UDP_PORT))
+        elif Input =='R':
+            self.sock.sendto(str(4), (self.UDP_IP, self.UDP_PORT))
+        elif Input =="FL":
+            self.sock.sendto(str(7), (self.UDP_IP, self.UDP_PORT))
+        elif Input =='BL':
+            self.sock.sendto(str(15), (self.UDP_IP, self.UDP_PORT))
+        elif Input =="FR":
+            self.sock.sendto(str(8), (self.UDP_IP, self.UDP_PORT))
+        elif Input =='B':
+            self.sock.sendto(str(16), (self.UDP_IP, self.UDP_PORT))
+        elif Input =='S':
+            self.sock.sendto(str(0), (self.UDP_IP, self.UDP_PORT))
+        elif Input =='u':
+            self.sock.sendto(str(18), (self.UDP_IP, self.UDP_PORT))
+        elif Input =='d':
+            self.sock.sendto(str(17), (self.UDP_IP, self.UDP_PORT))
+
+
+
+
+
+
 
 

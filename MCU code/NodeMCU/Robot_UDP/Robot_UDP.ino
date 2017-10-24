@@ -26,7 +26,7 @@ static const uint8_t D10  = 1;
 
  const char* ssid = "honor";
  const char* password = "password123";
- const char* host = "192.168.1.3";
+ const char* host = "192.168.43.95";
 
  char message[2];
 

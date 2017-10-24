@@ -50,7 +50,9 @@ class Cnn_face_detector:
     def __init__(self, debug=False, model ='mmod_human_face_detector.dat' ):
 
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        print dir_path
+        self.debug = debug
+        if self.debug:
+            print dir_path
         self.cnn_face_detector = dlib.cnn_face_detection_model_v1(model)
         self.win = dlib.image_window()
         self.debug = debug

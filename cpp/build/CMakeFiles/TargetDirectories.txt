@@ -1,0 +1,3 @@
+/home/chris/Desktop/tap_ws/src/auto_docking/c++/build/CMakeFiles/qr_image.dir
+/home/chris/Desktop/tap_ws/src/auto_docking/c++/build/CMakeFiles/qr_video.dir
+/home/chris/Desktop/tap_ws/src/auto_docking/c++/build/CMakeFiles/video_dlib_correlation.dir

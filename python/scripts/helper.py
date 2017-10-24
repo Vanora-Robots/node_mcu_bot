@@ -126,3 +126,10 @@ def rotate_image(image, angle):
     center = (w / 2, h / 2)
     rotation_matrix = cv2.getRotationMatrix2D(center, angle, 1.0)
     return cv2.warpAffine(image, rotation_matrix, (w, h))
+
+def getLine(value,pt1 , pt2):
+    print pt1 , pt2
+    m = (pt1[1]-pt2[1])/(pt1[0]-pt2[0])
+    c = pt1[1] - m*pt1[0]
+
+    return m*value + c
